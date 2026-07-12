@@ -7,3 +7,20 @@
 body {
   font-family: Arial, sans-serif;
 }
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-link{
+  margin-left: 1.5rem;
+}
+
+.footer a{
+  text-decoration: none;
+  color: rgb(27, 26, 26);
+  line-height: 2rem;
+}
+.footer a:hover{
+  color: rgb(31, 31, 233)
+}
