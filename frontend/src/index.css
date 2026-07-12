@@ -24,3 +24,7 @@ a {
 .footer a:hover{
   color: rgb(31, 31, 233)
 }
+
+.Team-link a {
+  text-decoration: none;
+}
