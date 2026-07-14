@@ -4,7 +4,7 @@ import CreateTicket from './CreateTicket'
 
 export default function SupportPage() {
   return (
-    <div className="container">
+    <div >
       <Hero/>
       <CreateTicket/>
     </div>
