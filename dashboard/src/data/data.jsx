@@ -21,7 +21,7 @@ export const watchlist = [
     name: "KPITTECH",
     price: 266.45,
     percent: "3.54%",
-    isDown: false,
+    isDown: false, 
   },
   {
     name: "QUICKHEAL",
