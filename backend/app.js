@@ -12,8 +12,15 @@ dns.setServers([
 
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const Holding = require("./models/holdings");
+const Position = require("./models/positions");
 const app = express();
 
+app.use(cors());
+app.use(bodyParser.json());
+1
 // const dbUrl="mongodb://127.0.0.1:27017/zerodha";
 const dbUrl=process.env.ATLAS_URI;
 main()
@@ -34,7 +41,15 @@ app.get('/',(req,res)=>{
     res.send("App is working !");
 });
 
+app.get("/holdings",async(req,res)=>{
+    let allHoldings=await Holding.find({});
+    res.json(allHoldings);
+})
 
+app.get("/positions",async(req,res)=>{
+    let allPosition=await Position.find({});
+    res.json(allPosition);
+})
 
 
 
