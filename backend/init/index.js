@@ -16,6 +16,10 @@ const {watchlists,holdings,positions}=require("./data");
 const Holding=require("../models/holdings");
 const Position=require("../models/positions");
 
+const userId = new mongoose.Types.ObjectId(
+    "6a833ebb3e4cd561e5548ee9"
+);
+
 const dbUrl=process.env.ATLAS_URI;
 main()
 .then((res)=>{
@@ -35,7 +39,11 @@ async function main()
 const initDB = async ()=>{
     await Holding.deleteMany({});
     await Position.deleteMany({});
-    await Holding.insertMany(holdings);
+    const holdingsWithUser = holdings.map((holding) => ({
+        ...holding,
+        userId: userId
+    }));
+    await Holding.insertMany(holdingsWithUser);
     await Position.insertMany(positions);
     console.log("data is initialized.");
 }

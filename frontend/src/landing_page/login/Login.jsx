@@ -1,17 +1,45 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function Signup() {
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
-    const handleSubmit = async (e) => {
+export default function Login()
+{
+    const [email , setEmail] = useState("");
+    const [password , setPassword] = useState("");
+    const navigate = useNavigate();
+    const handleSubmit = async (e) =>{
         e.preventDefault();
+        // console.log("Email",email);
+        // console.log("Password",password);
+        try {
+            const response = await fetch(
+                "http://localhost:8080/api/auth/login",
+                {
+                    method:"POST",
+                    headers:{
+                        "Content-Type":"application/json",
+                    },
+                    credentials: "include",
+                    body:JSON.stringify({
+                        email,
+                        password
+                    })
+                }
+            );
+            const data = await response.json();
+            if(response.ok)
+            {
+                console.log("Login Successfully!");
+                console.log(data);
+                window.location.href="http://localhost:5174";
+            }
+            else{
+                console.log(data.message);
+            }
+        } catch (error) {
+            console.log("Login Error : ",error);
+        }
 
-        console.log("Name:", name);
-        console.log("Email:", email);
-        console.log("Password:", password);
     };
 
     return (
@@ -20,24 +48,10 @@ export default function Signup() {
             <div className="card p-4 shadow" style={{ width: "400px" }}>
 
                 <h1 className="text-center mb-4">
-                    Sign Up
+                    Login
                 </h1>
 
                 <form onSubmit={handleSubmit}>
-
-                    <div className="mb-3">
-                        <label htmlFor="name" className="form-label">
-                            Name
-                        </label>
-
-                        <input
-                            id="name"
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            className="form-control"
-                        />
-                    </div>
 
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label">
@@ -66,17 +80,18 @@ export default function Signup() {
                             className="form-control"
                         />
                     </div>
+
                     <button
                         type="submit"
                         className="btn btn-primary w-100"
                     >
-                        Sign Up
+                        Login
                     </button>
 
                 </form>
                 <p className="text-center mt-3 mb-0">
-                    Already registered?{" "}
-                    <a href="/login">Login</a>
+                    Don't have an account?{" "}
+                    <a href="/signup">Register</a>
                 </p>
 
             </div>

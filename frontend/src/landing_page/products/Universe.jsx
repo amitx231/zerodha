@@ -21,7 +21,7 @@ export default function Universe() {
             <UniverseCard imageUrl="images/smallcaseLogo.png" description="Thematic investing platform that helps you invest in diversified baskets of stocks on ETFs."/>
             <UniverseCard imageUrl="images/dittoLogo.png" description="Personalized advice on life and health insurance. No spam and no mis-selling."/>  
         </div>
-        <button className='btn btn-primary btn-lg pt-2 pb-2 fs-5  d-flex justify-center' style={{width:"17%",margin:"auto"}}>Sign up for free</button>
+        <button className='btn btn-primary btn-lg pt-2 pb-2 fs-5  d-flex justify-center' style={{width:"17%",margin:"auto"}} >Sign up for free</button>
     </div>
   )
 }
